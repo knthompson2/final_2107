@@ -5,7 +5,10 @@ require './lib/attendee'
 RSpec.describe "Auction" do
   it "exists and begins with no items" do
     auction = Auction.new
+    auction2 = Auction.new("10/08/2021")
     expect(auction).to be_a(Auction)
+    expect(auction.date).to eq("11/08/2021")
+    expect(auction2.date).to eq("10/08/2021")
     expect(auction.items).to eq([])
   end
 
