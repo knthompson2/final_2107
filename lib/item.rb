@@ -11,12 +11,8 @@ class Item
   end
 
   def current_high_bid
-    if @bids != {}
-      @bids.max_by do |attendee, amount|
-        amount
-      end.last
-    else
-      0
-    end
+    @bids.max_by do |attendee, amount|
+      amount
+    end.last
   end
 end

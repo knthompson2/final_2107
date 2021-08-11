@@ -23,7 +23,11 @@ class Auction
 
   def potential_revenue
     @items.sum do |item|
-      item.current_high_bid
+      if item.bids != {}
+        item.current_high_bid
+      else
+        0
+      end
     end
   end
 end
