@@ -30,4 +30,26 @@ class Auction
       end
     end
   end
+
+  def bidders
+    @items.flat_map do |item|
+      item.item_bidders
+    end.uniq
+  end
+
+  def bidder_info
+    info = {}
+    @items.each do |item|
+      item.list_bidders.each do |attendee|
+        info[attendee] = {:budget => attendee.budget, :items => items_by_attendee(attendee)}
+      end
+    end
+    info
+  end
+
+  def items_by_attendee(attendee)
+    @items.find_all do |item|
+      item.list_bidders.include?(attendee)
+    end
+  end
 end
