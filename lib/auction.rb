@@ -53,4 +53,20 @@ class Auction
       item.list_bidders.include?(attendee)
     end
   end
+
+  def close_all_bidding
+    @items.each do |item|
+      item.close_bidding
+    end
+  end
+
+  # def sell_items
+  #   buyer = @items.find_all do |item|
+  #     item.bids.max_by do |attendee, amount|
+  #       if attendee.budget > amount
+  #         amount
+  #       else
+  #     end
+  #   end
+  # end
 end
